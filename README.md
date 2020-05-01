@@ -7,13 +7,13 @@ In this competition, our goal is to correctly identify digits from a dataset of 
 
 ## Results & Ranking
 
-The best entry (using LeNet v2 described below) scored an accuracy of 99.485% on the test set given by Kaggle with a worldwide rank of 420.
+The best entry (using LeNet v2 described below) scored an accuracy of 99.557% on the test set given by Kaggle with a worldwide rank of 351.
 
 |     Model    | Train Accuracy (%) | Validation Accuracy (%) |
 |:------------:|:------------------:|:-----------------------:|
 |    LeNet-5   |        99.98       |          99.05          |
 | LeNet-5 v1.0 |        99.18       |          99.29          |
-| LeNet-5 v2.0 |        99.66       |          99.57          |
+| LeNet-5 v2.0 |        99.82       |          99.62          |
 
 ***
 
@@ -57,17 +57,17 @@ ConvNet --> **ConvNet** --> Pool --> **(Dropout)** --> ConvNet --> Pool --> **(D
 
 ### [LeNet-5 v2] Modified Architecture
 
-ConvNet --> **ConvNet** --> **BatchNorm** --> Pool --> **(Dropout)** --> ConvNet --> **ConvNet** --> **BatchNorm** --> Pool --> **(Dropout)** --> (Flatten) --> **FullyConnected** --> **BatchNorm** --> FullyConnected --> **BatchNorm** --> FullyConnected --> **BatchNorm** --> Softmax 
+ConvNet --> **ConvNet** --> **BatchNorm** --> Pool --> **(Dropout)** --> ConvNet --> **ConvNet** --> **BatchNorm** --> Pool --> **(Dropout)** --> (Flatten) --> **FullyConnected** --> **BatchNorm** --> FullyConnected --> **BatchNorm** --> FullyConnected --> **BatchNorm** --> **(Dropout)** --> Softmax 
 
 #### Results
 
 **epochs** - 30  
-**loss** - 0.0113  
-**train_accuracy** - 0.9966  
-**val_loss** -  0.0176   
-**val_accuracy** - 0.9957    
+**loss** - 0.0112  
+**train_accuracy** - 0.9982   
+**val_loss** -  0.0192  
+**val_accuracy** - 0.9962  
 
-##### Highest Dev Set Accuracy Obtained - 99.57%
+##### Highest Dev Set Accuracy Obtained - 99.62%
 
 ***
 
@@ -79,7 +79,7 @@ ConvNet --> **ConvNet** --> **BatchNorm** --> Pool --> **(Dropout)** --> ConvNet
 
 Originally, there was overfitting in the model when trained for 30 epochs. It was significantly reduced using Data Augmentation using the Image Data Generator in Keras. Another major improvement was observed when learning rate decay was used instead of a fixed learning rate.
 
-More regularization using Dropouts (25%) after some layers reduced the variance as well. Batch Normalization, coupled with Dropouts, made the model converge much faster, reaching 99% accuracy within 10 epochs. 
+More regularization using Dropouts (25%) after some layers reduced the variance. Batch Normalization, coupled with Dropouts, made the model converge much faster, reaching 99% accuracy within 10 epochs. L2 regularization with lambda of 0.0005 in the convolutional layers reduced the variance of the model as well.
 
 ### Bias
 
