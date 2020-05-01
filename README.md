@@ -3,15 +3,29 @@
 
 In this competition, our goal is to correctly identify digits from a dataset of tens of thousands of handwritten images.
 
+***
+
 ## Results & Ranking
 
-My best entry (using LeNet v2 described below) scored an accuracy of 99.485% on the test set with a worldwide rank of 420. 
+The best entry (using LeNet v2 described below) scored an accuracy of 99.485% on the test set given by Kaggle with a worldwide rank of 420.
+
+|     Model    | Train Accuracy (%) | Validation Accuracy (%) |
+|:------------:|:------------------:|:-----------------------:|
+|    LeNet-5   |        99.98       |          99.05          |
+| LeNet-5 v1.0 |        99.18       |          99.29          |
+| LeNet-5 v2.0 |        99.66       |          99.57          |
+
+***
 
 ## Models
 
 ### [LeNet-5] Original Architecture
 
 ConvNet --> Pool --> ConvNet --> Pool --> (Flatten) --> FullyConnected --> FullyConnected --> Softmax 
+
+![LeNet-5](img/LeNet5.png)
+
+> GradientBased Learning Applied to Document Recognition (Yann LeCun Leon Bottou Yoshua Bengio and Patrick Haffner) (http://vision.stanford.edu/cs598_spring07/papers/Lecun98.pdf)
 
 #### Results
 
@@ -54,6 +68,24 @@ ConvNet --> **ConvNet** --> **BatchNorm** --> Pool --> **(Dropout)** --> ConvNet
 **val_accuracy** - 0.9957    
 
 ##### Highest Dev Set Accuracy Obtained - 99.57%
+
+***
+
+## A note on Bias & Variance
+
+> It is assumed that the Bayesian error is close to (99.5 - 99.7)% since some digits in the dataset are quite ambigous.
+
+### Variance
+
+Originally, there was overfitting in the model when trained for 30 epochs. It was significantly reduced using Data Augmentation using the Image Data Generator in Keras. Another major improvement was observed when learning rate decay was used instead of a fixed learning rate.
+
+More regularization using Dropouts (25%) after some layers reduced the variance as well. Batch Normalization, coupled with Dropouts, made the model converge much faster, reaching 99% accuracy within 10 epochs. 
+
+### Bias
+
+The original LeNet-5 architecture performed quite well on the MNIST dataset without any hyperparameter tuning. However, to push the accuracy beyond 99%, more convolutions were added with higher number of filters (36 & 64).
+
+The model gave better results as the number of epochs was increased from 10 to 30, and reached a saturation point around ~35 epochs. 
 
 ***
 
