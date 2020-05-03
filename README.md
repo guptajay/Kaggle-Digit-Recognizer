@@ -7,7 +7,7 @@ In this competition, our goal is to correctly identify digits from a dataset of 
 
 ## Results & Ranking
 
-The best entry (using LeNet v2 described below) scored an accuracy of 99.557% on the test set given by Kaggle with a worldwide rank of 351.
+The best entry (using LeNet v2 described below) scored an accuracy of 99.557% on the test set given by Kaggle with a worldwide rank of 351 as of May 2020.
 
 |     Model    | Train Accuracy (%) | Validation Accuracy (%) |
 |:------------:|:------------------:|:-----------------------:|
@@ -25,7 +25,7 @@ ConvNet --> Pool --> ConvNet --> Pool --> (Flatten) --> FullyConnected --> Fully
 
 ![LeNet-5](img/LeNet5.png)
 
-> GradientBased Learning Applied to Document Recognition (Yann LeCun Leon Bottou Yoshua Bengio and Patrick Haffner) (http://vision.stanford.edu/cs598_spring07/papers/Lecun98.pdf)
+> [LeCun et al., Gradient-based learning applied to document recognition (1998)](http://vision.stanford.edu/cs598_spring07/papers/Lecun98.pdf)
 
 #### Results
 
